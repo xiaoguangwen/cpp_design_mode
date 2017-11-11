@@ -27,7 +27,6 @@ void DoIt()
 int main(int argc, char *argv[])
 
 {
-
     DoIt();
 
     return 0;

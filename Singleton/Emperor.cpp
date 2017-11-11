@@ -7,24 +7,30 @@
 using std::cout;
 using std::endl;
 using std::string;
+
 CEmperor* CEmperor::m_pEmperor = NULL;
 std::mutex CEmperor::m_pMutex;
 CEmperor::CGarbo CEmperor::m_Garbo;
+
 CEmperor::CEmperor(void)
 {
     cout << "Create CEmperor Instance" << endl;
 }
+
 CEmperor::~CEmperor(void)
 {
     cout << "Destroy CEmperor Instance and release its resource" << endl;
 }
+
 void CEmperor::EmperorInfo(void)
 {
-    char msgBuffer[50] = { 0 };
-    snprintf(msgBuffer, 50, "皇ê帝?某3某3某3... ...(%s).", m_EmperorTag.c_str());
-    string msg(msgBuffer);
-    cout << msg.c_str() << endl;
+    //char msgBuffer[50] = { 0 };
+    //snprintf(msgBuffer, 50, "皇ê帝?某3某3某3... ...(%s).", m_EmperorTag.c_str());
+    //string msg(msgBuffer);
+    //cout << msg.c_str() << endl;
+    cout << "CEmperor tag:" << m_EmperorTag << endl;
 }
+
 CEmperor* CEmperor::GetInstance()
 {
     if (NULL == m_pEmperor)
