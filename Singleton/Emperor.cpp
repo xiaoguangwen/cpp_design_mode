@@ -1,63 +1,85 @@
-#include "Emperor.h"
 #include <iostream>
-#include <mutex>
-#include <stdlib.h>
-#include <stdio.h>
+#include "Emperor.h"
 
-using std::cout;
-using std::endl;
-using std::string;
+Emperor* Emperor::_pEmperor = NULL;
+std::mutex Emperor::_mutex;
 
-CEmperor* CEmperor::m_pEmperor = NULL;
-std::mutex CEmperor::m_pMutex;
-CEmperor::CGarbo CEmperor::m_Garbo;
-
-CEmperor::CEmperor(void)
+Emperor::Emperor()
 {
-    cout << "Create CEmperor Instance" << endl;
+    _tag = "";
+    cout << "Start Create Emperor" << endl;
 }
 
-CEmperor::~CEmperor(void)
+Emperor::Emperor(const Emperor& input)
 {
-    cout << "Destroy CEmperor Instance and release its resource" << endl;
-}
-
-void CEmperor::EmperorInfo(void)
-{
-    //char msgBuffer[50] = { 0 };
-    //snprintf(msgBuffer, 50, "皇ê帝?某3某3某3... ...(%s).", m_EmperorTag.c_str());
-    //string msg(msgBuffer);
-    //cout << msg.c_str() << endl;
-    cout << "CEmperor tag:" << m_EmperorTag << endl;
-}
-
-CEmperor* CEmperor::GetInstance()
-{
-    if (NULL == m_pEmperor)
+    Emperor *temp = NULL;
+    if (&input != this) 
     {
-        m_pMutex.lock();
-        if (NULL == m_pEmperor)
-            m_pEmperor = new CEmperor();
-        m_pMutex.unlock();
-    }
-    return m_pEmperor;
-}
-void CEmperor::ReleaseInstance()
-{
-    if (NULL != m_pEmperor)
-    {
-        m_pMutex.lock();
-        if (NULL != m_pEmperor)
-        {
-            delete m_pEmperor;
-            m_pEmperor = NULL;
-        }
-        m_pMutex.unlock();
+       temp = const_cast<Emperor *> (&input);
+	_tag = temp->GetEmperorTag();
+        cout << "Emperor copy  constructor tag:" << _tag << endl;
     }
 }
-void CEmperor::SetEmperorTag( string tag )
+
+Emperor::~Emperor()
 {
-    m_EmperorTag = tag;
+    cout << "Start Destory Emperor" << endl;
+    //Emperor::_mutex.lock();
+    //if (NULL != Emperor::_pEmperor) {
+    //   delete Emperor::_pEmperor;
+    //}
+    //Emperor::_pEmperor = NULL;
+    //Emperor::_mutex.unlock();
+}
+
+Emperor&  Emperor::operator=(const Emperor& input)
+{
+    Emperor *temp = NULL;
+    if (this != &input)
+    {
+       temp = const_cast<Emperor *> (&input);
+       _tag = temp->GetEmperorTag();
+       cout << "Emperor assign  constructor tag:" << _tag << endl;
+    }
+}
+
+Emperor* Emperor::GetInstance()
+{
+    if (NULL == _pEmperor)
+    {
+        Emperor::_mutex.lock();
+        
+   	Emperor::_pEmperor = new Emperor;
+        
+	Emperor::_mutex.unlock();
+    }
+    
+    return Emperor::_pEmperor;
+}
+
+void Emperor::ReleaseInstance()
+{
+    Emperor::_mutex.lock();
+    if (NULL != Emperor::_pEmperor) {
+	delete Emperor::_pEmperor;
+    }
+    Emperor::_pEmperor = NULL;
+    Emperor::_mutex.unlock();
+}
+
+string Emperor::GetEmperorTag()
+{
+    return _tag;
+}
+
+void Emperor::SetEmperorTag(const string &input)
+{
+    _tag = input;
+}
+
+void Emperor::EmperorInfo()
+{
+    cout << "print Emperor tag:" << _tag << endl;
 }
 
 

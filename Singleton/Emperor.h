@@ -1,49 +1,26 @@
-#include <mutex>
 #include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
+#include <mutex>
 
 using std::cout;
 using std::endl;
 using std::string;
 
-class CEmperor
-{
+class Emperor {
 public:
-    static CEmperor * GetInstance();
+    static Emperor *GetInstance();
     static void ReleaseInstance();
     void EmperorInfo(void);
-    void SetEmperorTag(string tag);
+    void SetEmperorTag(const string &);
+    string GetEmperorTag(void);
 private:
-    CEmperor(void);
-    virtual ~CEmperor(void);
-    CEmperor(const CEmperor&);
-    CEmperor& operator=(const CEmperor&);
-    static CEmperor *m_pEmperor;
-    static std::mutex  m_pMutex;
-    string m_EmperorTag;
-    class CGarbo
-    {
-    public:
-        CGarbo()
-        {
-            cout << "Create Garbo" << endl;
-        }
-        ~CGarbo()
-        {
-            cout << "Destroy Garbo" << endl;
-            if (NULL != m_pEmperor)
-            {
-                m_pMutex.lock();
-                if (NULL != m_pEmperor)
-                {
-                    cout << "Remove instance" << endl;
-                    delete m_pEmperor;
-                    m_pEmperor = NULL;
-                }
-                m_pMutex.unlock();
-            }
-        }
-    };
-    static CGarbo m_Garbo;
+    string _tag;
+    static Emperor *_pEmperor;
+    static std::mutex _mutex;
+
+protected:
+     Emperor(void);
+     virtual ~Emperor(void);
+     Emperor(const Emperor &);
+     Emperor& operator=(const Emperor &);
 };
+
