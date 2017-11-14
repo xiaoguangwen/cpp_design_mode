@@ -24,12 +24,6 @@ Emperor::Emperor(const Emperor& input)
 Emperor::~Emperor()
 {
     cout << "Start Destory Emperor" << endl;
-    //Emperor::_mutex.lock();
-    //if (NULL != Emperor::_pEmperor) {
-    //   delete Emperor::_pEmperor;
-    //}
-    //Emperor::_pEmperor = NULL;
-    //Emperor::_mutex.unlock();
 }
 
 Emperor&  Emperor::operator=(const Emperor& input)
