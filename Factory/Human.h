@@ -25,8 +25,8 @@ class WestHuman : public Human {
     public:
         WestHuman() { cout << "Create WestHuman" << endl; }
         ~WestHuman() { cout << "Destory WestHuman" << endl; }
-        void dining () { cout << "WestHuman eat with chopsticks" << endl; }
-        void bathing () { cout << "WestHuman Bathing at night" << endl; }
+        void dining () { cout << "WestHuman eat with fork" << endl; }
+        void bathing () { cout << "WestHuman Bathing in the morning" << endl; }
 };
 
 #endif
