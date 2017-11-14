@@ -34,4 +34,5 @@ int main ()
 {
     DoFactoryMothodEast();
     DoFactoryMothodWest();
+    return 0;
 }
