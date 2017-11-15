@@ -31,24 +31,39 @@ class WestHuman : public Human {
         virtual void nationality() = 0;
 };
 
+class ET : public Human {
+    public:
+        ET() {}
+        ~ET() {}
+       void dining() { cout << "ET eat with steel arm" << endl; }
+       void bathing() { cout << "ET no bathing" << endl;}
+       virtual void nationality() = 0;
+};
+
+
 class ChineseEastHuman : public EastHuman {
     public:
-	void nationality(void) { cout << "I am Chinese" <<endl; }
+	void nationality(void) { cout << "I am Chinese" << endl; }
 };
 
 class JapaneseEastHuman : public EastHuman {
     public:
-        void nationality(void) { cout << "I am Janpanese" <<endl; }
+        void nationality(void) { cout << "I am Janpanese" << endl; }
 };
 
 class AmericanWestHuman : public WestHuman {
     public:
-        void nationality(void) { cout << "I am American" <<endl; }
+        void nationality(void) { cout << "I am American" << endl; }
 };
 
 class EnglishmanWestHuman : public WestHuman {
     public:
-        void nationality(void) { cout << "I am Englishman" <<endl; }
+        void nationality(void) { cout << "I am Englishman" << endl; }
+};
+
+class CybertronET : public ET {
+    public:
+	void nationality(void) { cout << "I am come from Cybertron" << endl; }
 };
 
 #endif

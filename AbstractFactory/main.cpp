@@ -24,6 +24,7 @@ int main ()
     DoFactoryMothod<EastHuman, JapaneseEastHuman>();
     DoFactoryMothod<WestHuman, AmericanWestHuman>();   
     DoFactoryMothod<WestHuman, EnglishmanWestHuman>();
+    DoFactoryMothod<ET, CybertronET>();
 
     return 0;
 }
