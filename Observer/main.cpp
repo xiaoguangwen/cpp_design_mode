@@ -10,7 +10,9 @@ int main()
     
     p_monitored->AddObserver(p_a_observer);
     p_monitored->NotifyObserver("First Update");
-   
+
+    p_monitored->DeleteObserver(p_a_observer);
+    
     p_monitored->AddObserver(p_b_observer);   
     p_monitored->NotifyObserver("Second Update");
     

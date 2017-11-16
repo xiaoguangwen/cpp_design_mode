@@ -7,7 +7,7 @@ using std::string;
 
 A_Observer::A_Observer(string name) : Observer(name) {}
 
-A_Observer::~A_Observer() {}
+A_Observer::~A_Observer() { cout << "Destory A" << endl; }
 
 void A_Observer::Update(string context) {
     
@@ -25,7 +25,7 @@ void A_Observer::A_Get() {
 
 B_Observer::B_Observer(string name) : Observer(name) {}
 
-B_Observer::~B_Observer() {}
+B_Observer::~B_Observer() { cout << "Destory B" << endl; }
 
 void B_Observer::Update(string context) {
 

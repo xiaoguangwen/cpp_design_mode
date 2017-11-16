@@ -16,7 +16,7 @@ RealMonitored::~RealMonitored() {
     for(iter; iter != m_ObserverList.end();) {
         iter_temp = iter;
         m_ObserverList.erase(iter++);
-        //delete iter_temp;
+        //delete *iter_temp;
     }
 }
 
