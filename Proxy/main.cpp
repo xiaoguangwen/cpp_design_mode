@@ -15,6 +15,6 @@ int main ()
    p_interface->ProxyOperate1();
    p_interface->ProxyOperate2();
    delete p_interface;
-   
+  
    return 0; 
 }
