@@ -11,8 +11,10 @@ int main()
     pEmperor1->EmperorInfo();
     
     Emperor *pEmperor2 = Emperor::GetInstance();   
-    pEmperor1->EmperorInfo();
-
+    pEmperor2->EmperorInfo();
+    pEmperor2->SetEmperorTag("Are you OK???");
+    pEmperor2->EmperorInfo();
+    
     Emperor::ReleaseInstance();
     return 0;
 }

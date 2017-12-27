@@ -15,8 +15,8 @@ Emperor::Emperor(const Emperor& input)
     Emperor *temp = NULL;
     if (&input != this) 
     {
-       temp = const_cast<Emperor *> (&input);
-	_tag = temp->GetEmperorTag();
+        temp = const_cast<Emperor *> (&input);
+	    _tag = temp->GetEmperorTag();
         cout << "Emperor copy  constructor tag:" << _tag << endl;
     }
 }
@@ -43,9 +43,9 @@ Emperor* Emperor::GetInstance()
     {
         Emperor::_mutex.lock();
         
-   	Emperor::_pEmperor = new Emperor;
+   	    Emperor::_pEmperor = new Emperor;
         
-	Emperor::_mutex.unlock();
+	    Emperor::_mutex.unlock();
     }
     
     return Emperor::_pEmperor;
@@ -55,7 +55,7 @@ void Emperor::ReleaseInstance()
 {
     Emperor::_mutex.lock();
     if (NULL != Emperor::_pEmperor) {
-	delete Emperor::_pEmperor;
+	    delete Emperor::_pEmperor;
     }
     Emperor::_pEmperor = NULL;
     Emperor::_mutex.unlock();

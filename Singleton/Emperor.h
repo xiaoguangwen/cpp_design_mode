@@ -12,12 +12,13 @@ public:
     void EmperorInfo(void);
     void SetEmperorTag(const string &);
     string GetEmperorTag(void);
+    
 private:
     string _tag;
     static Emperor *_pEmperor;
     static std::mutex _mutex;
 
-protected:
+//protected:
      Emperor(void);
      virtual ~Emperor(void);
      Emperor(const Emperor &);
